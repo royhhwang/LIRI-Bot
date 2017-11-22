@@ -1,0 +1,27 @@
+{
+  "name": "liri-bot",
+  "version": "1.0.0",
+  "description": "LIRI HW for 11/20/17",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royhhwang/LIRI-Bot.git"
+  },
+  "keywords": [
+    "liri"
+  ],
+  "author": "Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royhhwang/LIRI-Bot/issues"
+  },
+  "homepage": "https://github.com/royhhwang/LIRI-Bot#readme",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  }
+}
