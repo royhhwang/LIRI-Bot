@@ -6,6 +6,13 @@ var twitterApi = require("./keys.js");
 
 var action = process.argv[2];
 
+var client = new Twitter({
+    consumer_key: twitterApi.consumer_key,
+    consumer_secret: twitterApi.consumer_secret,
+    access_token_key: twitterApi.access_token_key,
+    access_token_secret: twitterApi.access_token_secret
+});
+
 switch (action) {
     case "spotify-this-song":
         searchSpot();
@@ -16,45 +23,15 @@ switch (action) {
 }
 
 function twitterSpot() {
-    var client = new Twitter({
-        consumer_key: 'NaeMTiRcFWHSieW4VMPEsjgN8 ',
-        consumer_secret: 'h9GIEMzAM9lzDBFKTcrJiEojLewXPUoFRl9et73xLHEOQEUix1',
-        access_token_key: '933414829628407810-kfw0L0ewwbQNJBhCMazgvPfvGugqrjM',
-        access_token_secret: '0oW83l8UtfjAFu9h2des0sFHo36X3Fivm6cJQaEledr0r'
-    });
-
-    var params = { screen_name: 'royhhwang' };
-
+    
+    console.log(client);
+    var params = {screen_name: 'royhhwang'};
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (!error) {
-            console.log(tweets);
-            console.log("Working");
+            console.log(JSON.stringify(tweets));
+            console.log(response);
         }
-        console.log("Something's wrong");
+            console.log('pls work');
+            console.log(JSON.stringify(error));
     });
-};
-
-
-function searchSpot() {
-    var nodeArgu = process.argv;
-    var songName = "";
-
-    for (var i = 3; i < nodeArgu.length; i++) {
-        if (i > 3 && i < nodeArgu.length) {
-            songName = songName + "+" + nodeArgu[i];
-        }
-        else {
-            songName += nodeArgu[i];
-        }
-    }
-    var spotify = new Spotify({
-        id: '93bc5f856c4442f58eb44e47fd4a0455',
-        secret: '2dfcff7ae9924e8886a409676509ab1d'
-    });
-    spotify.search({ type: 'track', query: songName }, function (err, data) {
-        if (err) {
-            return console.log('Error occurred: ' + err);
-        }
-        console.log(data);
-    })
-};
+}
